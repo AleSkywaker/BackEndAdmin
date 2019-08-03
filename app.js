@@ -7,7 +7,10 @@ let app = express();
 
 // Rutas
 app.get('/:id', (req, res, next) => {
-  res.json({ message: `Hola ${req}` });
+  res.status(200).json({
+    ok: true,
+    message: `Hola ${req.params.id}`
+  });
 });
 
 // Escuchar peticiones
