@@ -1,0 +1,14 @@
+{
+  "name": "backendadmin",
+  "version": "1.0.0",
+  "description": "Back end for admin dashboard",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Colombo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
