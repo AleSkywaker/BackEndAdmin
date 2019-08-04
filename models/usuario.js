@@ -9,3 +9,5 @@ let usuarioSchema = new Schema({
   img: { type: String, required: false },
   role: { type: String, required: true, default: 'USER_ROLE' }
 });
+
+module.exports = mongoose.model('Usuario', usuarioSchema);
