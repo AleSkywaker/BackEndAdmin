@@ -8,6 +8,8 @@ let app = express();
 
 // Importar rutas
 const appRoutes = require('./routes/routes');
+const userRoutes = require('./routes/usuario');
+
 mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true });
 
 var db = mongoose.connection;
@@ -18,6 +20,7 @@ db.once('open', function() {
 });
 
 // Rutas
+app.use('/user', userRoutes);
 app.use('/', appRoutes);
 
 // Escuchar peticiones
