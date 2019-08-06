@@ -5,6 +5,9 @@ let port = 3000;
 
 // Inicializar express
 let app = express();
+
+// Importar rutas
+const appRoutes = require('./routes/routes');
 mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true });
 
 var db = mongoose.connection;
@@ -15,7 +18,7 @@ db.once('open', function() {
 });
 
 // Rutas
-
+app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(port, () => {

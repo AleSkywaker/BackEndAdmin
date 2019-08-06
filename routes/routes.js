@@ -1,3 +1,7 @@
+const express = require('express');
+
+let app = express();
+
 app.get('/:id?', (req, res, next) => {
   if (req.params.id === undefined) {
     res.status(200).json({
@@ -11,3 +15,5 @@ app.get('/:id?', (req, res, next) => {
     });
   }
 });
+
+module.exports = app;
