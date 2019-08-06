@@ -1,6 +1,6 @@
 const express = require('express');
-
-let app = express();
+const app = express();
+const Usuario = require('../models/usuario');
 
 app.get('/', (req, res, next) => {
   if (req.params.id === undefined) {
