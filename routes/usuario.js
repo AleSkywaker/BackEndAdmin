@@ -40,7 +40,7 @@ app.post('/', (req, res, next) => {
     } else {
       res.status(200).json({
         ok: true,
-        usuario
+        usuarioGuardado
       });
     }
   });
