@@ -1,11 +1,15 @@
 // Requires
-let express = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
-let port = 3000;
-
+const bodyParser = require('body-parser');
 // Inicializar express
-let app = express();
+const app = express();
+const port = 3000;
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
 // Importar rutas
 const appRoutes = require('./routes/routes');
 const userRoutes = require('./routes/usuario');
