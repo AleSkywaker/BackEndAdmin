@@ -19,4 +19,13 @@ app.get('/', (req, res, next) => {
   });
 });
 
+app.post('/', (req, res, next) => {
+  let body = req.body;
+
+  res.status(200).json({
+    ok: true,
+    body
+  });
+});
+
 module.exports = app;
