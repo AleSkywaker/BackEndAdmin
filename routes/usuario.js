@@ -38,7 +38,7 @@ app.post('/', (req, res, next) => {
         errors: err
       });
     } else {
-      res.status(200).json({
+      res.status(201).json({
         ok: true,
         usuarioGuardado
       });
