@@ -32,7 +32,7 @@ app.post('/', (req, res, next) => {
 
   usuario.save((err, usuarioGuardado) => {
     if (err) {
-      return res.status(500).json({
+      return res.status(400).json({
         ok: false,
         mensaje: 'Error cargando usuario',
         errors: err
