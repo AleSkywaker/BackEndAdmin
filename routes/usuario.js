@@ -50,6 +50,7 @@ app.put('/:id', (req, res, next) => {
           errors: err
         });
       }
+      usuarioGuardado.password = ':)';
       res.status(200).json({
         ok: true,
         usuarioGuardado
