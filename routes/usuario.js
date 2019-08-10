@@ -23,6 +23,8 @@ app.put('/:id', (req, res, next) => {
   let id = req.params.id;
 
   Usuario.findById(id, (err, usuario) => {
+    let body = req.body;
+
     if (err) {
       return res.status(500).json({
         ok: false,
@@ -37,11 +39,6 @@ app.put('/:id', (req, res, next) => {
         errors: { message: 'No existe un usuario con este ID' }
       });
     }
-  });
-
-  res.status(200).json({
-    ok: true,
-    id
   });
 });
 
