@@ -41,6 +41,16 @@ app.put('/:id', (req, res, next) => {
     usuario.nombre = body.nombre;
     usuario.email = body.email;
     usuario.role = body.role;
+
+    usuario.save((err, usuarioGuardado) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          mensaje: 'Error al actualizar usuario',
+          errors: err
+        });
+      }
+    });
   });
 });
 
