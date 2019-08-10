@@ -19,6 +19,31 @@ app.get('/', (req, res, next) => {
     }
   });
 });
+app.put('/:id', (req, res, next) => {
+  let id = req.params.id;
+
+  Usuario.findById(id, (err, usuario) => {
+    if (err) {
+      return res.status(500).json({
+        ok: false,
+        mensaje: 'Error al buscar usuario',
+        errors: err
+      });
+    }
+    if (!usuario) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Usuario no encontrado',
+        errors: { message: 'No existe un usuario con este ID' }
+      });
+    }
+  });
+
+  res.status(200).json({
+    ok: true,
+    id
+  });
+});
 
 app.post('/', (req, res, next) => {
   let body = req.body;
