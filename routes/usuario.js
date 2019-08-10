@@ -50,6 +50,10 @@ app.put('/:id', (req, res, next) => {
           errors: err
         });
       }
+      res.status(200).json({
+        ok: true,
+        usuarioGuardado
+      });
     });
   });
 });
