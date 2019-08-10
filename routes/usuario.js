@@ -38,6 +38,9 @@ app.put('/:id', (req, res, next) => {
         errors: { message: 'No existe un usuario con este ID' }
       });
     }
+    usuario.nombre = body.nombre;
+    usuario.email = body.email;
+    usuario.role = body.role;
   });
 });
 
