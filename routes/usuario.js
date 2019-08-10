@@ -21,10 +21,9 @@ app.get('/', (req, res, next) => {
 });
 app.put('/:id', (req, res, next) => {
   let id = req.params.id;
+  let body = req.body;
 
   Usuario.findById(id, (err, usuario) => {
-    let body = req.body;
-
     if (err) {
       return res.status(500).json({
         ok: false,
