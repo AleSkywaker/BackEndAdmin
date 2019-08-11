@@ -8,17 +8,33 @@ app.post('/', (req, res, next) => {
 
   Usuario.findOne({ email: body.email }, (err, usuarioDB) => {
     if (err) {
-      return res.status(403).json({
+      return res.status(500).json({
         ok: false,
-        mensaje: 'No se encontró usuario',
+        mensaje: 'Error al buscar usuario',
         errors: err
       });
     }
-    res.status(200).json({
-      ok: true,
-      usuarioDB,
-      mensaje: { message: 'Login correcto' }
-    });
+    if (!usuarioDB) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Credenciales incorrectas',
+        errors: err
+      });
+    }
+    if (!bcrypt.compareSync(body.password, usuarioDB.password)) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Algo va mal',
+        errors: err
+      });
+    }
+    if (bcrypt.compareSync(body.password, usuarioDB.password)) {
+      res.status(200).json({
+        ok: true,
+        usuarioDB,
+        mensaje: { message: 'Login correcto' }
+      });
+    }
   });
 });
 
