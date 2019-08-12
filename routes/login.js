@@ -32,6 +32,7 @@ app.post('/', (req, res, next) => {
     res.status(200).json({
       ok: true,
       usuarioDB,
+      id: usuarioDB._id,
       mensaje: { message: 'Login correcto' }
     });
   });
