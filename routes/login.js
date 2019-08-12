@@ -29,6 +29,9 @@ app.post('/', (req, res, next) => {
       });
     }
 
+    // Crear Token
+
+    let token = 
     res.status(200).json({
       ok: true,
       usuarioDB,
