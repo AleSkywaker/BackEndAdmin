@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 const app = express();
 const Usuario = require('../models/usuario');
 
@@ -31,8 +32,7 @@ app.post('/', (req, res, next) => {
 
     // Crear Token
 
-    let token = 
-    res.status(200).json({
+    let token = res.status(200).json({
       ok: true,
       usuarioDB,
       id: usuarioDB._id,
