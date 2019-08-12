@@ -32,11 +32,13 @@ app.post('/', (req, res, next) => {
 
     // Crear Token
 
-    let token = res.status(200).json({
+    let token = jwt.sign({ usuario: usuarioDB }, 'semilla', { expiresIn: 14400 }); // 4horas
+    res.status(200).json({
       ok: true,
       usuarioDB,
       id: usuarioDB._id,
-      mensaje: { message: 'Login correcto' }
+      mensaje: { message: 'Login correcto' },
+      token
     });
   });
 });
