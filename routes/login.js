@@ -28,13 +28,12 @@ app.post('/', (req, res, next) => {
         errors: err
       });
     }
-    if (bcrypt.compareSync(body.password, usuarioDB.password)) {
-      res.status(200).json({
-        ok: true,
-        usuarioDB,
-        mensaje: { message: 'Login correcto' }
-      });
-    }
+
+    res.status(200).json({
+      ok: true,
+      usuarioDB,
+      mensaje: { message: 'Login correcto' }
+    });
   });
 });
 
