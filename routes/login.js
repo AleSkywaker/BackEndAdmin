@@ -1,9 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
 const app = express();
 const Usuario = require('../models/usuario');
 
+const jwt = require('jsonwebtoken');
 const SEED = require('../config/config').SEED;
 app.post('/', (req, res, next) => {
   let body = req.body;

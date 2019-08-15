@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const Usuario = require('../models/usuario');
 
+const mdAuth = require('../middlewares/authentication');
+
 app.get('/', (req, res, next) => {
   Usuario.find({}, 'nombre email img role').exec((err, usuarios) => {
     if (err) {
@@ -19,19 +21,8 @@ app.get('/', (req, res, next) => {
     }
   });
 });
-/****
- VERIFICAR TOKEN - MIDDLEWARE
- ****/
-app.use('/', (req,res,next)=>{
-  let token = req.query.token;
 
-  
-
-})
-
-
-
-app.put('/:id', (req, res, next) => {
+app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
   let id = req.params.id;
   let body = req.body;
 
@@ -71,7 +62,7 @@ app.put('/:id', (req, res, next) => {
   });
 });
 
-app.delete('/:id', (req, res, next) => {
+app.delete('/:id', mdAuth.verificaToken, (req, res, next) => {
   let id = req.params.id;
 
   Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
@@ -97,7 +88,7 @@ app.delete('/:id', (req, res, next) => {
   });
 });
 
-app.post('/', (req, res, next) => {
+app.post('/', mdAuth.verificaToken, (req, res, next) => {
   let body = req.body;
 
   var usuario = new Usuario({
@@ -118,7 +109,8 @@ app.post('/', (req, res, next) => {
     } else {
       res.status(201).json({
         ok: true,
-        usuarioGuardado
+        usuarioGuardado,
+        usuarioToken: req.usuario
       });
     }
   });
