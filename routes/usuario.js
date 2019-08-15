@@ -22,6 +22,14 @@ app.get('/', (req, res, next) => {
 /****
  VERIFICAR TOKEN - MIDDLEWARE
  ****/
+app.use('/', (req,res,next)=>{
+  let token = req.query.token;
+
+  
+
+})
+
+
 
 app.put('/:id', (req, res, next) => {
   let id = req.params.id;
