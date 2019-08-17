@@ -28,7 +28,7 @@ app.post('/', (req, res, next) => {
   var hospital = new Hospital({
     nombre: body.nombre,
     img: body.img,
-    usuario: '123'
+    usuario: body.usuario
   });
 
   hospital.save((err, hospitalGuardado) => {
