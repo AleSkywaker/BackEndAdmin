@@ -51,37 +51,35 @@ app.put('/:id', (req, res, next) => {
   let id = req.params.id;
   let body = req.body;
 
-  Usuario.findById(id, (err, usuario) => {
+  Hospital.findById(id, (err, hospital) => {
     if (err) {
       return res.status(500).json({
         ok: false,
-        mensaje: 'Error al buscar usuario',
+        mensaje: 'Error al buscar hospital',
         errors: err
       });
     }
-    if (!usuario) {
+    if (!hospital) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Usuario no encontrado',
-        errors: { message: 'No existe un usuario con este ID' }
+        mensaje: 'Hospital no encontrado',
+        errors: { message: 'No existe un hospital con este ID' }
       });
     }
-    usuario.nombre = body.nombre;
-    usuario.email = body.email;
-    usuario.role = body.role;
+    hospital.nombre = body.nombre;
+    img.email = body.img;
 
-    usuario.save((err, usuarioGuardado) => {
+    hospital.save((err, hospitalGuardado) => {
       if (err) {
         return res.status(400).json({
           ok: false,
-          mensaje: 'Error al actualizar usuario',
+          mensaje: 'Error al actualizar hospital',
           errors: err
         });
       }
-      usuarioGuardado.password = ':)';
       res.status(200).json({
         ok: true,
-        usuarioGuardado
+        hospitalGuardado
       });
     });
   });
