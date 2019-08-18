@@ -67,7 +67,7 @@ app.put('/:id', (req, res, next) => {
       });
     }
     hospital.nombre = body.nombre;
-    img.email = body.img;
+    hospital.img = body.img;
 
     hospital.save((err, hospitalGuardado) => {
       if (err) {
