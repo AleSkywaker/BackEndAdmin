@@ -85,32 +85,30 @@ app.put('/:id', (req, res, next) => {
   });
 });
 
-/**
 app.delete('/:id', (req, res, next) => {
   let id = req.params.id;
 
-  Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
+  Hospital.findByIdAndRemove(id, (err, hospitalBorrado) => {
     if (err) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Error al borrar usuario',
+        mensaje: 'Error al borrar hospital',
         errors: err
       });
     }
-    if (!usuarioBorrado) {
+    if (!hospitalBorrado) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'No se ha encontrado usuario con este ID',
-        errors: { message: 'No existe usuario con este ID' }
+        mensaje: 'No se ha encontrado hospital con este ID',
+        errors: { message: 'No existe hospital con este ID' }
       });
     }
     res.status(200).json({
       ok: true,
-      usuarioBorrado,
-      mensaje: { message: 'Usuario borrado correctamente' }
+      hospitalBorrado,
+      mensaje: { message: 'Hospital borrado correctamente' }
     });
   });
 });
-**/
 
 module.exports = app;
