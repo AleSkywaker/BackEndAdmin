@@ -15,6 +15,7 @@ const appRoutes = require('./routes/routes');
 const userRoutes = require('./routes/usuario');
 const loginRoutes = require('./routes/login');
 const hospitalRoutes = require('./routes/hospital');
+const medicoRoutes = require('./routes/medico');
 
 mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true });
 
@@ -26,6 +27,7 @@ db.once('open', function() {
 });
 
 // Rutas
+app.use('/medico', medicoRoutes);
 app.use('/hospital', hospitalRoutes);
 app.use('/user', userRoutes);
 app.use('/login', loginRoutes);
