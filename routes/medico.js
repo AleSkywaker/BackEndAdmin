@@ -6,17 +6,17 @@ const Medico = require('../models/medico');
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
-  Hospital.find({}, 'nombre img usuario').exec((err, hospitales) => {
+  Medico.find({}, 'nombre img usuario hospital').exec((err, medicos) => {
     if (err) {
       return res.status(500).json({
         ok: false,
-        message: `Error en base de datos al buscar hospitales`,
+        message: `Error en base de datos al buscar medicos`,
         errors: err
       });
     } else {
       res.status(200).json({
         ok: true,
-        hospitales
+        medicos
       });
     }
   });
