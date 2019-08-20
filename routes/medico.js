@@ -32,17 +32,17 @@ app.post('/', (req, res, next) => {
     hospital: body.hospital
   });
 
-  hospital.save((err, hospitalGuardado) => {
+  medico.save((err, medicoGuardado) => {
     if (err) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Error cargando hospital',
+        mensaje: 'Error al guardar medico',
         errors: err
       });
     } else {
       res.status(201).json({
         ok: true,
-        hospitalGuardado
+        medicoGuardado
       });
     }
   });
