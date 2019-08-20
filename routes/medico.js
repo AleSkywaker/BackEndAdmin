@@ -48,43 +48,45 @@ app.post('/', (req, res, next) => {
   });
 });
 
-// app.put('/:id', (req, res, next) => {
-//   let id = req.params.id;
-//   let body = req.body;
+app.put('/:id', (req, res, next) => {
+  let id = req.params.id;
+  let body = req.body;
 
-//   Hospital.findById(id, (err, hospital) => {
-//     if (err) {
-//       return res.status(500).json({
-//         ok: false,
-//         mensaje: 'Error al buscar hospital',
-//         errors: err
-//       });
-//     }
-//     if (!hospital) {
-//       return res.status(400).json({
-//         ok: false,
-//         mensaje: 'Hospital no encontrado',
-//         errors: { message: 'No existe un hospital con este ID' }
-//       });
-//     }
-//     hospital.nombre = body.nombre;
-//     hospital.img = body.img;
+  Medico.findById(id, (err, medico) => {
+    if (err) {
+      return res.status(500).json({
+        ok: false,
+        mensaje: 'Error al buscar medico',
+        errors: err
+      });
+    }
+    if (!medico) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Medico encontrado',
+        errors: { message: 'No existe un medico con este ID' }
+      });
+    }
+    medico.nombre = body.nombre;
+    medico.img = body.img;
+    medico.usuario = body.usuario;
+    medico.hospital = body.hospital;
 
-//     hospital.save((err, hospitalGuardado) => {
-//       if (err) {
-//         return res.status(400).json({
-//           ok: false,
-//           mensaje: 'Error al actualizar hospital',
-//           errors: err
-//         });
-//       }
-//       res.status(200).json({
-//         ok: true,
-//         hospitalGuardado
-//       });
-//     });
-//   });
-// });
+    medico.save((err, medicoGuradado) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          mensaje: 'Error al actualizar medico',
+          errors: err
+        });
+      }
+      res.status(200).json({
+        ok: true,
+        medicoGuradado
+      });
+    });
+  });
+});
 
 // app.delete('/:id', (req, res, next) => {
 //   let id = req.params.id;
