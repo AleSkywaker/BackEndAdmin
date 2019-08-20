@@ -22,30 +22,30 @@ app.get('/', (req, res, next) => {
   });
 });
 
-// app.post('/', (req, res, next) => {
-//   let body = req.body;
+app.post('/', (req, res, next) => {
+  let body = req.body;
 
-//   var hospital = new Hospital({
-//     nombre: body.nombre,
-//     img: body.img,
-//     usuario: body.usuario
-//   });
+  var hospital = new Hospital({
+    nombre: body.nombre,
+    img: body.img,
+    usuario: body.usuario
+  });
 
-//   hospital.save((err, hospitalGuardado) => {
-//     if (err) {
-//       return res.status(400).json({
-//         ok: false,
-//         mensaje: 'Error cargando hospital',
-//         errors: err
-//       });
-//     } else {
-//       res.status(201).json({
-//         ok: true,
-//         hospitalGuardado
-//       });
-//     }
-//   });
-// });
+  hospital.save((err, hospitalGuardado) => {
+    if (err) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Error cargando hospital',
+        errors: err
+      });
+    } else {
+      res.status(201).json({
+        ok: true,
+        hospitalGuardado
+      });
+    }
+  });
+});
 
 // app.put('/:id', (req, res, next) => {
 //   let id = req.params.id;
