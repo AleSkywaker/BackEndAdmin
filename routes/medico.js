@@ -25,10 +25,11 @@ app.get('/', (req, res, next) => {
 app.post('/', (req, res, next) => {
   let body = req.body;
 
-  var hospital = new Hospital({
+  var medico = new Medico({
     nombre: body.nombre,
     img: body.img,
-    usuario: body.usuario
+    usuario: body.usuario,
+    hospital: body.hospital
   });
 
   hospital.save((err, hospitalGuardado) => {
