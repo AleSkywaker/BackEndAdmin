@@ -102,8 +102,8 @@ app.delete('/:id', (req, res, next) => {
     if (!medicoBorrado) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'No se ha encontrado hospital con este ID',
-        errors: { message: 'No existe hospital con este ID' }
+        mensaje: 'No se ha encontrado medico con este ID',
+        errors: { message: 'No existe medico con este ID' }
       });
     }
     res.status(200).json({
