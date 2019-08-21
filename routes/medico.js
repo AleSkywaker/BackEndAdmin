@@ -91,15 +91,15 @@ app.put('/:id', (req, res, next) => {
 app.delete('/:id', (req, res, next) => {
   let id = req.params.id;
 
-  Hospital.findByIdAndRemove(id, (err, hospitalBorrado) => {
+  Medico.findByIdAndRemove(id, (err, medicoBorrado) => {
     if (err) {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Error al borrar hospital',
+        mensaje: 'Error al borrar medico',
         errors: err
       });
     }
-    if (!hospitalBorrado) {
+    if (!medicoBorrado) {
       return res.status(400).json({
         ok: false,
         mensaje: 'No se ha encontrado hospital con este ID',
