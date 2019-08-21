@@ -109,7 +109,7 @@ app.delete('/:id', (req, res, next) => {
     res.status(200).json({
       ok: true,
       medicoBorrado,
-      mensaje: { message: 'Hospital borrado correctamente' }
+      mensaje: { message: 'Medico borrado correctamente' }
     });
   });
 });
