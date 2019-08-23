@@ -85,7 +85,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
   });
 });
 
-app.delete('/:id', (req, res, next) => {
+app.delete('/:id', mdAuth.verificaToken, (req, res, next) => {
   let id = req.params.id;
 
   Hospital.findByIdAndRemove(id, (err, hospitalBorrado) => {
