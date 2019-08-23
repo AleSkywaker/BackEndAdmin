@@ -22,7 +22,7 @@ app.get('/', (req, res, next) => {
   });
 });
 
-app.post('/', (req, res, next) => {
+app.post('/', mdAuth.verificaToken, (req, res, next) => {
   let body = req.body;
 
   var medico = new Medico({
