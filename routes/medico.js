@@ -48,7 +48,7 @@ app.post('/', (req, res, next) => {
   });
 });
 
-app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
+app.put('/:id', (req, res, next) => {
   let id = req.params.id;
   let body = req.body;
 
@@ -88,7 +88,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
   });
 });
 
-app.delete('/:id', mdAuth.verificaToken, (req, res, next) => {
+app.delete('/:id', (req, res, next) => {
   let id = req.params.id;
 
   Medico.findByIdAndRemove(id, (err, medicoBorrado) => {
