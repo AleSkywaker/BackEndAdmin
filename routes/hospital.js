@@ -22,7 +22,7 @@ app.get('/', (req, res, next) => {
   });
 });
 
-app.post('/',  (req, res, next) => {
+app.post('/', mdAuth.verificaToken, (req, res, next) => {
   let body = req.body;
 
   var hospital = new Hospital({
@@ -47,7 +47,7 @@ app.post('/',  (req, res, next) => {
   });
 });
 
-app.put('/:id',  (req, res, next) => {
+app.put('/:id', (req, res, next) => {
   let id = req.params.id;
   let body = req.body;
 
