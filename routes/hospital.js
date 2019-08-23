@@ -22,7 +22,7 @@ app.get('/', (req, res, next) => {
   });
 });
 
-app.post('/', mdAuth.verificaToken, (req, res, next) => {
+app.post('/',  (req, res, next) => {
   let body = req.body;
 
   var hospital = new Hospital({
@@ -47,7 +47,7 @@ app.post('/', mdAuth.verificaToken, (req, res, next) => {
   });
 });
 
-app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
+app.put('/:id',  (req, res, next) => {
   let id = req.params.id;
   let body = req.body;
 
@@ -85,7 +85,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
   });
 });
 
-app.delete('/:id', mdAuth.verificaToken, (req, res, next) => {
+app.delete('/:id', (req, res, next) => {
   let id = req.params.id;
 
   Hospital.findByIdAndRemove(id, (err, hospitalBorrado) => {
