@@ -27,8 +27,7 @@ app.post('/', mdAuth.verificaToken, (req, res, next) => {
 
   var hospital = new Hospital({
     nombre: body.nombre,
-    img: body.img,
-    usuario: body.usuario
+    usuario: req.usuario._id
   });
 
   hospital.save((err, hospitalGuardado) => {
