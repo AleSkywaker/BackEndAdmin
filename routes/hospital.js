@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mdAuth = require('../middlewares/authentication');
+
 const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
