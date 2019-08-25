@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const Hospital = require('../models/hospital');
-
 const mdAuth = require('../middlewares/authentication');
+const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
   Hospital.find({}, 'nombre img usuario').exec((err, hospitales) => {
