@@ -6,7 +6,7 @@ const mdAuth = require('../middlewares/authentication');
 const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
-  Hospital.find({}, 'nombre img usuario').exec((err, hospitales) => {
+  Hospital.find({}).exec((err, hospitales) => {
     if (err) {
       return res.status(500).json({
         ok: false,
