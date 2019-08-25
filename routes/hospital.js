@@ -67,8 +67,8 @@ app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
       });
     }
     hospital.nombre = body.nombre;
-    hospital.img = body.img;
-    hospital.usuario = body.usuario;
+    hospital.usuario = req.usuario._id;
+
     hospital.save((err, hospitalGuardado) => {
       if (err) {
         return res.status(400).json({
