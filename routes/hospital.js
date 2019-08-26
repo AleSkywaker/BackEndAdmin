@@ -7,7 +7,7 @@ const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
   Hospital.find({})
-    .populate('usuario')
+    .populate('usuario', 'nombre email')
     .exec((err, hospitales) => {
       if (err) {
         return res.status(500).json({
