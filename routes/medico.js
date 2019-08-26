@@ -7,6 +7,7 @@ const mdAuth = require('../middlewares/authentication');
 app.get('/', (req, res, next) => {
   Medico.find({})
     .populate('usuario', 'nombre email')
+    .populate('hospital')
     .exec((err, medicos) => {
       if (err) {
         return res.status(500).json({
