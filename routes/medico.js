@@ -1,12 +1,11 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const app = express();
 const Medico = require('../models/medico');
 
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
-  Medico.find({}, 'nombre img usuario hospital').exec((err, medicos) => {
+  Medico.find({}).exec((err, medicos) => {
     if (err) {
       return res.status(500).json({
         ok: false,
@@ -27,8 +26,7 @@ app.post('/', mdAuth.verificaToken, (req, res, next) => {
 
   var medico = new Medico({
     nombre: body.nombre,
-    img: body.img,
-    usuario: body.usuario,
+    usuario: req.usuario._id,
     hospital: body.hospital
   });
 
@@ -68,8 +66,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
       });
     }
     medico.nombre = body.nombre;
-    medico.img = body.img;
-    medico.usuario = body.usuario;
+    medico.usuario = req.usuario._id;
     medico.hospital = body.hospital;
 
     medico.save((err, medicoGuradado) => {
