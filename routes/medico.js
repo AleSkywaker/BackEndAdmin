@@ -5,20 +5,22 @@ const Medico = require('../models/medico');
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
-  Medico.find({}).exec((err, medicos) => {
-    if (err) {
-      return res.status(500).json({
-        ok: false,
-        message: `Error en base de datos al buscar medicos`,
-        errors: err
-      });
-    } else {
-      res.status(200).json({
-        ok: true,
-        medicos
-      });
-    }
-  });
+  Medico.find({})
+    .populate('usuario', 'nombre email')
+    .exec((err, medicos) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          message: `Error en base de datos al buscar medicos`,
+          errors: err
+        });
+      } else {
+        res.status(200).json({
+          ok: true,
+          medicos
+        });
+      }
+    });
 });
 
 app.post('/', mdAuth.verificaToken, (req, res, next) => {
