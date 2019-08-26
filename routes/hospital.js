@@ -6,20 +6,22 @@ const mdAuth = require('../middlewares/authentication');
 const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
-  Hospital.find({}).exec((err, hospitales) => {
-    if (err) {
-      return res.status(500).json({
-        ok: false,
-        message: `Error en base de datos al buscar hospitales`,
-        errors: err
-      });
-    } else {
-      res.status(200).json({
-        ok: true,
-        hospitales
-      });
-    }
-  });
+  Hospital.find({})
+    .populate('usuario')
+    .exec((err, hospitales) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          message: `Error en base de datos al buscar hospitales`,
+          errors: err
+        });
+      } else {
+        res.status(200).json({
+          ok: true,
+          hospitales
+        });
+      }
+    });
 });
 
 app.post('/', mdAuth.verificaToken, (req, res, next) => {
