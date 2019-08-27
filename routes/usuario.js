@@ -6,6 +6,7 @@ const Usuario = require('../models/usuario');
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
+  let desde = req.query.desde || 0;
   Usuario.find({}, 'nombre email img role')
     .limit(3)
     .exec((err, usuarios) => {
