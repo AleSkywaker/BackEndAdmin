@@ -9,6 +9,7 @@ app.get('/', (req, res, next) => {
   let desde = req.query.desde || 0;
   desde = Number(desde);
   Usuario.find({}, 'nombre email img role')
+    .skip(desde)
     .limit(3)
     .exec((err, usuarios) => {
       if (err) {
