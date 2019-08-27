@@ -6,20 +6,22 @@ const Usuario = require('../models/usuario');
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
-  Usuario.find({}, 'nombre email img role').exec((err, usuarios) => {
-    if (err) {
-      return res.status(500).json({
-        ok: false,
-        message: `Error en base de datos`,
-        errors: err
-      });
-    } else {
-      res.status(200).json({
-        ok: true,
-        usuarios
-      });
-    }
-  });
+  Usuario.find({}, 'nombre email img role')
+    .limit(3)
+    .exec((err, usuarios) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          message: `Error en base de datos`,
+          errors: err
+        });
+      } else {
+        res.status(200).json({
+          ok: true,
+          usuarios
+        });
+      }
+    });
 });
 
 app.put('/:id', mdAuth.verificaToken, (req, res, next) => {
