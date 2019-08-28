@@ -7,6 +7,8 @@ const mdAuth = require('../middlewares/authentication');
 app.get('/', (req, res, next) => {
   let desde = req.query.desde || 0;
   Medico.find({})
+    .skip(desde)
+    .limit(3)
     .populate('usuario', 'nombre email')
     .populate('hospital')
     .exec((err, medicos) => {
