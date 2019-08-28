@@ -6,6 +6,7 @@ const mdAuth = require('../middlewares/authentication');
 const Hospital = require('../models/hospital');
 
 app.get('/', (req, res, next) => {
+  let desde = req.query.desde || 0;
   Hospital.find({})
     .populate('usuario', 'nombre email')
     .exec((err, hospitales) => {
