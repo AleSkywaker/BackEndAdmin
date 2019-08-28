@@ -19,9 +19,12 @@ app.get('/', (req, res, next) => {
           errors: err
         });
       } else {
-        res.status(200).json({
-          ok: true,
-          hospitales
+        Hospital.count({}, (error, cantidad) => {
+          res.status(200).json({
+            ok: true,
+            hospitales,
+            cantidad
+          });
         });
       }
     });
