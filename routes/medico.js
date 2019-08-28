@@ -19,9 +19,12 @@ app.get('/', (req, res, next) => {
           errors: err
         });
       } else {
-        res.status(200).json({
-          ok: true,
-          medicos
+        Medico.count({}, (err, cantidad) => {
+          res.status(200).json({
+            ok: true,
+            medicos,
+            cantidad
+          });
         });
       }
     });
