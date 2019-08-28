@@ -8,6 +8,8 @@ const Hospital = require('../models/hospital');
 app.get('/', (req, res, next) => {
   let desde = req.query.desde || 0;
   Hospital.find({})
+    .skip(desde)
+    .limit(3)
     .populate('usuario', 'nombre email')
     .exec((err, hospitales) => {
       if (err) {
