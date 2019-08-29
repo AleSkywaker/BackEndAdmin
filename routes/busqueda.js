@@ -6,7 +6,9 @@ const Hospital = require('../models/hospital');
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
 
-	Hospital.find({ nombre: busqueda }, (err, hospitales) => {
+	let regex = new RegExp(busqueda, 'i');
+
+	Hospital.find({ nombre: regex }, (err, hospitales) => {
 		if (err) {
 			console.log('error', err);
 		} else {
@@ -17,5 +19,22 @@ app.get('/todo/:busqueda', (req, res, next) => {
 		}
 	});
 });
+
+function buscarHospital(busqueda, regex) {
+
+  return new Promise((resolve, reject)=>{
+
+    Hospital.find({ nombre: busqueda }, (err, hospitales) => {
+
+      if(err){
+        
+      }
+
+    });
+
+
+  })
+
+}
 
 module.exports = app;
