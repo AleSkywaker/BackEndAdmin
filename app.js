@@ -16,14 +16,15 @@ const userRoutes = require('./routes/usuario');
 const loginRoutes = require('./routes/login');
 const hospitalRoutes = require('./routes/hospital');
 const medicoRoutes = require('./routes/medico');
+const busquedaRoutes = require('./routes/busqueda');
 
 mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
-  console.log('Conectatos a la base de datos');
+	// we're connected!
+	console.log('Conectatos a la base de datos');
 });
 
 // Rutas
@@ -31,9 +32,10 @@ app.use('/medico', medicoRoutes);
 app.use('/hospital', hospitalRoutes);
 app.use('/user', userRoutes);
 app.use('/login', loginRoutes);
+app.use('/busqueda', busquedaRoutes);
 app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(port, () => {
-  console.log(`Escuchando en puerto ${port} \x1b[36m%s\x1b[0m`, `online`);
+	console.log(`Escuchando en puerto ${port} \x1b[36m%s\x1b[0m`, `online`);
 });
