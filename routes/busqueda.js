@@ -7,3 +7,5 @@ app.get('/', (req, res, next) => {
 		message: 'todo ok'
 	});
 });
+
+module.exports = app;
