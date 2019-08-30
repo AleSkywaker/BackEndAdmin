@@ -38,13 +38,16 @@ function buscarHospitales(busqueda, regex) {
 }
 function buscarMedicos(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Medico.find({ nombre: regex }, (err, medicos) => {
-			if (err) {
-				reject('Error al cargar medicos', err);
-			} else {
-				resolve(medicos);
-			}
-		});
+		Medico.find({ nombre: regex })
+			.populate('usuario', 'nombre email')
+			.populate('hospital')
+			.exec((err, medicos) => {
+				if (err) {
+					reject('Error al cargar medicos', err);
+				} else {
+					resolve(medicos);
+				}
+			});
 	});
 }
 function buscarUsuarios(busqueda, regex) {
