@@ -47,13 +47,15 @@ function buscarMedicos(busqueda, regex) {
 }
 function buscarUsuarios(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Usuario.find({ nombre: regex }, (err, usuarios) => {
-			if (err) {
-				reject('Error al cargar usuarios', err);
-			} else {
-				resolve(usuarios);
-			}
-		});
+		Usuario.find({})
+			.or([{ nombre: regex }, { email: regex }])
+			.exec((err, usuarios) => {
+				if (err) {
+					reject('Error al cargar usuarios', err);
+				} else {
+					resolve(usuarios);
+				}
+			});
 	});
 }
 
