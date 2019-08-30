@@ -3,21 +3,24 @@ const app = express();
 
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
-const Ususario = require('../models/usuario');
+const Usuario = require('../models/usuario');
 
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
 	let regex = new RegExp(busqueda, 'i');
 
-	Promise.all([buscarHospitales(busqueda, regex), buscarMedicos(busqueda, regex)]).then(
-		respuestas => {
-			res.status(200).json({
-				ok: true,
-				hospitales: respuestas[0],
-				medicos: respuestas[1]
-			});
-		}
-	);
+	Promise.all([
+		buscarHospitales(busqueda, regex),
+		buscarMedicos(busqueda, regex),
+		buscarUsuarios(busqueda, regex)
+	]).then(respuestas => {
+		res.status(200).json({
+			ok: true,
+			hospitales: respuestas[0],
+			medicos: respuestas[1],
+			usuarios: respuestas[2]
+		});
+	});
 });
 
 function buscarHospitales(busqueda, regex) {
@@ -33,22 +36,22 @@ function buscarHospitales(busqueda, regex) {
 }
 function buscarMedicos(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Medico.find({ nombre: regex }, (err, hospitales) => {
+		Medico.find({ nombre: regex }, (err, medicos) => {
 			if (err) {
-				reject('Error al cargar hospitales', err);
+				reject('Error al cargar medicos', err);
 			} else {
-				resolve(hospitales);
+				resolve(medicos);
 			}
 		});
 	});
 }
 function buscarUsuarios(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Usuario.find({ nombre: regex }, (err, hospitales) => {
+		Usuario.find({ nombre: regex }, (err, usuarios) => {
 			if (err) {
-				reject('Error al cargar hospitales', err);
+				reject('Error al cargar usuarios', err);
 			} else {
-				resolve(hospitales);
+				resolve(usuarios);
 			}
 		});
 	});
