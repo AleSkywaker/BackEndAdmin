@@ -27,5 +27,16 @@ function buscarHospitales(regex) {
 		});
 	});
 }
+function buscarMedicos(regex) {
+	return new Promise((resolve, reject) => {
+		Medico.find({ nombre: regex }, (err, hospitales) => {
+			if (err) {
+				reject('Error al cargar hospitales', err);
+			} else {
+				resolve(hospitales);
+			}
+		});
+	});
+}
 
 module.exports = app;
