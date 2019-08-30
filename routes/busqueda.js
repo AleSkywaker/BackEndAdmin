@@ -25,13 +25,15 @@ app.get('/todo/:busqueda', (req, res, next) => {
 
 function buscarHospitales(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Hospital.find({ nombre: regex }, (err, hospitales) => {
-			if (err) {
-				reject('Error al cargar hospitales', err);
-			} else {
-				resolve(hospitales);
-			}
-		});
+		Hospital.find({ nombre: regex })
+			.populate('usuario', 'nombre email')
+			.exec((err, hospitales) => {
+				if (err) {
+					reject('Error al cargar hospitales', err);
+				} else {
+					resolve(hospitales);
+				}
+			});
 	});
 }
 function buscarMedicos(busqueda, regex) {
