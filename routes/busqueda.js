@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const Hospital = require('../models/hospital');
+const Medico = require('../models/medico');
 
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
