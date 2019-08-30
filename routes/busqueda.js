@@ -3,6 +3,7 @@ const app = express();
 
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
+const Ususario = require('../models/usuario');
 
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
@@ -31,6 +32,17 @@ function buscarHospitales(busqueda, regex) {
 	});
 }
 function buscarMedicos(busqueda, regex) {
+	return new Promise((resolve, reject) => {
+		Medico.find({ nombre: regex }, (err, hospitales) => {
+			if (err) {
+				reject('Error al cargar hospitales', err);
+			} else {
+				resolve(hospitales);
+			}
+		});
+	});
+}
+function buscarUsuarios(busqueda, regex) {
 	return new Promise((resolve, reject) => {
 		Medico.find({ nombre: regex }, (err, hospitales) => {
 			if (err) {
