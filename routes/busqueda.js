@@ -44,7 +44,7 @@ function buscarMedicos(busqueda, regex) {
 }
 function buscarUsuarios(busqueda, regex) {
 	return new Promise((resolve, reject) => {
-		Medico.find({ nombre: regex }, (err, hospitales) => {
+		Usuario.find({ nombre: regex }, (err, hospitales) => {
 			if (err) {
 				reject('Error al cargar hospitales', err);
 			} else {
