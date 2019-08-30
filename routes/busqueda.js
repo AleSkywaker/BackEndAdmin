@@ -8,14 +8,15 @@ app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
 	let regex = new RegExp(busqueda, 'i');
 
-	Promise.all([buscarHospitales(busqueda, regex), buscarMedicos(busqueda, regex)]).then();
-
-	buscarHospitales(regex).then(hospitales => {
-		res.status(200).json({
-			ok: true,
-			hospitales
-		});
-	});
+	Promise.all([buscarHospitales(busqueda, regex), buscarMedicos(busqueda, regex)]).then(
+		respuestas => {
+			res.status(200).json({
+				ok: true,
+				hospitales: respuestas[0],
+				medicos: respuestas[1]
+			});
+		}
+	);
 });
 
 function buscarHospitales(busqueda, regex) {
