@@ -5,9 +5,13 @@ const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
 const Usuario = require('../models/usuario');
 
-/***************
+/*****************
  * Buscar Medico *
- ***************/
+ *****************/
+
+/*******************
+ * Buscar Hospital *
+ *******************/
 
 /***************
  * Buscar todo *
