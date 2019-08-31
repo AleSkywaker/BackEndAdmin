@@ -13,6 +13,10 @@ const Usuario = require('../models/usuario');
  * Buscar Hospital *
  *******************/
 
+/******************
+ * Buscar Usuario *
+ ******************/
+
 /***************
  * Buscar todo *
  ***************/
