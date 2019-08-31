@@ -6,6 +6,10 @@ const Medico = require('../models/medico');
 const Usuario = require('../models/usuario');
 
 /***************
+ * Buscar Medico *
+ ***************/
+
+/***************
  * Buscar todo *
  ***************/
 
