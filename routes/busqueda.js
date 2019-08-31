@@ -6,8 +6,9 @@ const Medico = require('../models/medico');
 const Usuario = require('../models/usuario');
 
 
-
-// Buscar todo
+/*****************
+*Buscar todo
+****************/
 
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
