@@ -5,6 +5,10 @@ const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
 const Usuario = require('../models/usuario');
 
+
+
+// Buscar todo
+
 app.get('/todo/:busqueda', (req, res, next) => {
 	let busqueda = req.params.busqueda;
 	let regex = new RegExp(busqueda, 'i');
