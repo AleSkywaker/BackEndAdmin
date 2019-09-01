@@ -5,17 +5,11 @@ const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
 const Usuario = require('../models/usuario');
 
-/*****************
- * Buscar Medico *
- *****************/
+/*************************
+ * Buscar por colección  *
+ *************************/
 
-/*******************
- * Buscar Hospital *
- *******************/
-
-/******************
- * Buscar Usuario *
- ******************/
+app.get('coleccion/:tabla/:busqueda', (req, res) => {});
 
 /***************
  * Buscar todo *
