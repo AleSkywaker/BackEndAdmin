@@ -10,7 +10,10 @@ const Usuario = require('../models/usuario');
  *************************/
 
 app.get('coleccion/:tabla/:busqueda', (req, res) => {
+  let busqueda = req.params.busqueda;
+  let regexBusqueda = new RegExp(busqueda, 'i');
   let tabla = req.params.tabla;
+  let regexTabla = new RegExp(tabla, 'i');
 
   if (tabla == 'medico') {
   }
