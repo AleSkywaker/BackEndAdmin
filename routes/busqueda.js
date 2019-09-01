@@ -13,15 +13,32 @@ app.get('coleccion/:tabla/:busqueda', (req, res) => {
   let busqueda = req.params.busqueda;
   let regexBusqueda = new RegExp(busqueda, 'i');
   let tabla = req.params.tabla;
-  let regexTabla = new RegExp(tabla, 'i');
 
   if (tabla == 'medico') {
+    buscarMedicos(busqueda, regex).then(medicos => {
+      res.status(200).json({
+        ok: true,
+        medicos
+      });
+    });
   }
 
   if (tabla == 'hospital') {
+    buscarHospitales(busqueda, regex).then(hospitales => {
+      res.status(200).json({
+        ok: true,
+        hospitales
+      });
+    });
   }
 
   if (tabla == 'usuario') {
+    buscarUsusarios(busqueda, regex).then(usuarios => {
+      res.status(200).json({
+        ok: true,
+        usuarios
+      });
+    });
   }
 });
 
