@@ -9,7 +9,18 @@ const Usuario = require('../models/usuario');
  * Buscar por colección  *
  *************************/
 
-app.get('coleccion/:tabla/:busqueda', (req, res) => {});
+app.get('coleccion/:tabla/:busqueda', (req, res) => {
+  let tabla = req.params.tabla;
+
+  if (tabla == 'medico') {
+  }
+
+  if (tabla == 'hospital') {
+  }
+
+  if (tabla == 'usuario') {
+  }
+});
 
 /***************
  * Buscar todo *
