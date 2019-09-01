@@ -9,13 +9,14 @@ const Usuario = require('../models/usuario');
  * Buscar por colección  *
  *************************/
 
-app.get('coleccion/:tabla/:busqueda', (req, res) => {
+app.get('/cole/:tabla/:busqueda', (req, res) => {
   let busqueda = req.params.busqueda;
   let regexBusqueda = new RegExp(busqueda, 'i');
   let tabla = req.params.tabla;
+  let regexTabla = new RegExp(tabla, 'i');
 
   if (tabla == 'medico') {
-    buscarMedicos(busqueda, regex).then(medicos => {
+    buscarMedicos(busqueda, regexBusqueda).then(medicos => {
       res.status(200).json({
         ok: true,
         medicos
@@ -24,7 +25,7 @@ app.get('coleccion/:tabla/:busqueda', (req, res) => {
   }
 
   if (tabla == 'hospital') {
-    buscarHospitales(busqueda, regex).then(hospitales => {
+    buscarHospitales(busqueda, regexBusqueda).then(hospitales => {
       res.status(200).json({
         ok: true,
         hospitales
@@ -33,7 +34,7 @@ app.get('coleccion/:tabla/:busqueda', (req, res) => {
   }
 
   if (tabla == 'usuario') {
-    buscarUsusarios(busqueda, regex).then(usuarios => {
+    buscarUsusarios(busqueda, regexBusqueda).then(usuarios => {
       res.status(200).json({
         ok: true,
         usuarios
