@@ -18,7 +18,8 @@ app.get('/cole/:tabla/:busqueda', (req, res) => {
   if (tabla != 'medico' || tabla != 'hospital' || tabla != 'usuario') {
     res.status(404).json({
       ok: false,
-      message: 'Url no encontrada'
+      message: 'Url no encontrada',
+      error: { message: 'Tipo de tabla no encontrada' }
     });
   }
 
