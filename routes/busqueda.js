@@ -12,43 +12,33 @@ const Usuario = require('../models/usuario');
 app.get('/cole/:tabla/:busqueda', (req, res) => {
   let busqueda = req.params.busqueda;
   let tabla = req.params.tabla;
-  let regexBusqueda = new RegExp(busqueda, 'i');
-  let regexTabla = new RegExp(tabla, 'i');
+  let regex = new RegExp(busqueda, 'i');
 
-  if (tabla != 'medico' || tabla != 'hospital' || tabla != 'usuario') {
-    res.status(404).json({
-      ok: false,
-      message: 'Url no encontrada',
-      error: { message: 'Tipo de tabla no encontrada' }
-    });
-  }
+  switch (tabla) {
+    case 'usuario':
+      promesa = buscarUsusarios(busqueda, regex);
+      break;
+    case 'medico':
+      promesa = buscarMedicos(busqueda, regex);
+      break;
+    case 'hospital':
+      promesa = buscarHospitales(busqueda, regex);
+      break;
 
-  if (tabla == 'medico') {
-    buscarMedicos(busqueda, regexBusqueda).then(medicos => {
-      res.status(200).json({
-        ok: true,
-        medicos
+    default:
+      return res.status(404).json({
+        ok: false,
+        message: 'Url no encontrada',
+        error: { message: 'Tipo de tabla no encontrada' }
       });
-    });
   }
 
-  if (tabla == 'hospital') {
-    buscarHospitales(busqueda, regexBusqueda).then(hospitales => {
-      res.status(200).json({
-        ok: true,
-        hospitales
-      });
+  promesa.then(data => {
+    res.status(200).json({
+      ok: true,
+      [tabla]: data
     });
-  }
-
-  if (tabla == 'usuario') {
-    buscarUsusarios(busqueda, regexBusqueda).then(usuarios => {
-      res.status(200).json({
-        ok: true,
-        usuarios
-      });
-    });
-  }
+  });
 });
 
 /***************
