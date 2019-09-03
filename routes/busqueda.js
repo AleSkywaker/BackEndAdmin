@@ -15,6 +15,13 @@ app.get('/cole/:tabla/:busqueda', (req, res) => {
   let regexBusqueda = new RegExp(busqueda, 'i');
   let regexTabla = new RegExp(tabla, 'i');
 
+  if (tabla != 'medico' || tabla != 'hospital' || tabla != 'usuario') {
+    res.status(404).json({
+      ok: false,
+      message: 'Url no encontrada'
+    });
+  }
+
   if (tabla == 'medico') {
     buscarMedicos(busqueda, regexBusqueda).then(medicos => {
       res.status(200).json({
