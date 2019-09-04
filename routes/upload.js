@@ -12,3 +12,5 @@ app.get('/', (req, res, next) => {
     message: 'Nueva ruta upload'
   });
 });
+
+module.exports = app;
