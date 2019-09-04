@@ -6,4 +6,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res, next) => {});
+app.get('/', (req, res, next) => {
+  res.status(200).json({
+    ok: true,
+    message: 'Nueva ruta upload'
+  });
+});
