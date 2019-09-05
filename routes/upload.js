@@ -13,7 +13,7 @@ app.use(fileUpload());
 app.put('/', (req, res, next) => {
   let nombreImagen = req.files.img;
   let nombreCortado = nombreImagen.name.split('.');
-
+  let extension = nombreCortado[nombreCortado.length - 1];
   if (!req.files) {
     return res.status(400).json({
       ok: false,
@@ -23,7 +23,7 @@ app.put('/', (req, res, next) => {
   res.status(200).json({
     ok: true,
     message: 'Nueva ruta upload',
-    nombreCortado
+    extension
   });
 });
 
