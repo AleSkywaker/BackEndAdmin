@@ -22,7 +22,8 @@ app.put('/', (req, res, next) => {
   if (extensionesValidas.indexOf(extension) < 0) {
     return res.status(400).json({
       ok: false,
-      message: 'Extension no valida'
+      message: 'Extension no valida',
+      errors: { message: `Las extensiones validas son ${extensionesValidas.join(',')}` }
     });
   }
   if (!req.files) {
