@@ -11,6 +11,8 @@ const port = 3000;
 app.use(fileUpload());
 
 app.put('/', (req, res, next) => {
+  let imagen = req.files.imagen;
+
   if (!req.files) {
     return res.status(400).json({
       ok: false,
