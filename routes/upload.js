@@ -11,7 +11,8 @@ const port = 3000;
 app.use(fileUpload());
 
 app.put('/', (req, res, next) => {
-  let imagen = req.files.imagen;
+  let nombreImagen = req.files.img;
+  let nombreCortado = nombreImagen.name.split('.');
 
   if (!req.files) {
     return res.status(400).json({
@@ -21,7 +22,8 @@ app.put('/', (req, res, next) => {
   }
   res.status(200).json({
     ok: true,
-    message: 'Nueva ruta upload'
+    message: 'Nueva ruta upload',
+    nombreCortado
   });
 });
 
