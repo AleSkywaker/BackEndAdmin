@@ -11,9 +11,13 @@ const port = 3000;
 app.use(fileUpload());
 
 app.put('/', (req, res, next) => {
+  //Obtener nombre del archivo
   let nombreImagen = req.files.img;
   let nombreCortado = nombreImagen.name.split('.');
   let extension = nombreCortado[nombreCortado.length - 1];
+
+  //Extensiones validas
+  let extensionesValidas = ['png', 'jpg', 'gif', 'jpeg'];
   if (!req.files) {
     return res.status(400).json({
       ok: false,
