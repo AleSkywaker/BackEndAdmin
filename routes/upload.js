@@ -33,7 +33,7 @@ app.put('/', (req, res, next) => {
   }
   res.status(200).json({
     ok: true,
-    message: 'Nueva ruta upload',
+    message: 'Imagen subida correctamente!!',
     extension
   });
 });
