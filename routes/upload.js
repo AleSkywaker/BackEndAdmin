@@ -18,6 +18,13 @@ app.put('/', (req, res, next) => {
 
   //Extensiones validas
   let extensionesValidas = ['png', 'jpg', 'gif', 'jpeg'];
+
+  if (extensionesValidas.indexOf(extension) < 0) {
+    return res.status(400).json({
+      ok: false,
+      message: 'Extension no valida'
+    });
+  }
   if (!req.files) {
     return res.status(400).json({
       ok: false,
