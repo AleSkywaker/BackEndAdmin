@@ -26,6 +26,9 @@ app.put('/', (req, res, next) => {
       errors: { message: `Las extensiones validas son ${extensionesValidas.join(',')}` }
     });
   }
+
+  // Nombre del archivo personalizado
+
   if (!req.files) {
     return res.status(400).json({
       ok: false,
