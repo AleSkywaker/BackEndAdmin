@@ -11,6 +11,8 @@ const port = 3000;
 app.use(fileUpload());
 
 app.put('/:tipo/:id', (req, res, next) => {
+
+  let tipo = req.params.tipo;
   if (!req.files) {
     return res.status(400).json({
       ok: false,
