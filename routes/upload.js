@@ -38,10 +38,13 @@ app.put('/:tipo/:id', (req, res, next) => {
 
   // Nombre del archivo personalizado
 
+  let nombreArchivo = `${id}-${new Date().getMilliseconds()}.${extensionArchivo}`;
+
   res.status(200).json({
     ok: true,
     message: 'Imagen subida correctamente!!',
-    extension
+    extension,
+    nombreArchivo
   });
 });
 
