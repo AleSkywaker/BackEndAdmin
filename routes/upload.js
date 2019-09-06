@@ -13,6 +13,17 @@ app.use(fileUpload());
 app.put('/:tipo/:id', (req, res, next) => {
   let tipo = req.params.tipo;
   let id = req.params.id;
+
+  let tiposValidos = ['hospitales', 'medicos', 'usuarios'];
+
+  if (tiposValidos.indexOf(tipo) < 0) {
+    return res.status(400).json({
+      ok: false,
+      message: 'Tipo no valido',
+      errors: { message: `Los tipos validos son ${tiposValidos.join(', ')}` }
+    });
+  }
+
   if (!req.files) {
     return res.status(400).json({
       ok: false,
@@ -32,14 +43,16 @@ app.put('/:tipo/:id', (req, res, next) => {
     return res.status(400).json({
       ok: false,
       message: 'Extension no valida',
-      errors: { message: `Las extensiones validas son ${extensionesValidas.join(',')}` }
+      errors: { message: `Las extensiones validas son ${extensionesValidas.join(', ')}` }
     });
   }
 
   // Nombre del archivo personalizado
 
-  let nombreArchivo = `${id}-${new Date().getMilliseconds()}.${extensionArchivo}`;
+  let nombreArchivo = `${id}-${new Date().getMilliseconds()}.${extension}`;
 
+  // Mover el archivo
+  let path = `./uploads/${tipo}/${nombreArchivo}`;
   res.status(200).json({
     ok: true,
     message: 'Imagen subida correctamente!!',
