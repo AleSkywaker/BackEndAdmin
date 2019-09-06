@@ -10,7 +10,14 @@ const port = 3000;
 // default options
 app.use(fileUpload());
 
-app.put('/:tipo/:id', (req, res, next) => {
+app.put('/', (req, res, next) => {
+  if (!req.files) {
+    return res.status(400).json({
+      ok: false,
+      message: 'No ha subido imagen'
+    });
+  }
+
   //Obtener nombre del archivo
   let nombreImagen = req.files.img;
   let nombreCortado = nombreImagen.name.split('.');
@@ -29,12 +36,6 @@ app.put('/:tipo/:id', (req, res, next) => {
 
   // Nombre del archivo personalizado
 
-  if (!req.files) {
-    return res.status(400).json({
-      ok: false,
-      message: 'No ha subido imagen'
-    });
-  }
   res.status(200).json({
     ok: true,
     message: 'Imagen subida correctamente!!',
