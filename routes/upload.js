@@ -10,7 +10,7 @@ const port = 3000;
 // default options
 app.use(fileUpload());
 
-app.put('/', (req, res, next) => {
+app.put('/:tipo/:id', (req, res, next) => {
   if (!req.files) {
     return res.status(400).json({
       ok: false,
