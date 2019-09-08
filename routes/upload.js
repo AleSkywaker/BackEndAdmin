@@ -73,6 +73,9 @@ app.put('/:tipo/:id', (req, res, next) => {
   });
 });
 
-function subirPorTipo(tipo, id, path, res) {}
+function subirPorTipo(tipo, id, path, res) {
+
+  if(tipo === 'medicos'){}
+}
 
 module.exports = app;
