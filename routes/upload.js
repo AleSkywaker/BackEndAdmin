@@ -62,6 +62,7 @@ app.put('/:tipo/:id', (req, res, next) => {
         errors: err
       });
     }
+    subirPorTipo(tipo, id, path, res);
     res.status(200).json({
       ok: true,
       message: 'Imagen guardada correctamente!!',
