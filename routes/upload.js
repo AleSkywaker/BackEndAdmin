@@ -63,12 +63,13 @@ app.put('/:tipo/:id', (req, res, next) => {
       });
     }
     subirPorTipo(tipo, id, path, res);
-    res.status(200).json({
-      ok: true,
-      message: 'Imagen guardada correctamente!!',
-      extension,
-      nombreImagenPersonalizado
-    });
+
+    // res.status(200).json({
+    //   ok: true,
+    //   message: 'Imagen guardada correctamente!!',
+    //   extension,
+    //   nombreImagenPersonalizado
+    // });
   });
 });
 
