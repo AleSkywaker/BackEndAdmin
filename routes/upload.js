@@ -71,6 +71,6 @@ app.put('/:tipo/:id', (req, res, next) => {
   });
 });
 
-function subirPorTipo() {}
+function subirPorTipo(tipo, id, path, res) {}
 
 module.exports = app;
