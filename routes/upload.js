@@ -8,6 +8,12 @@ const app = express();
 // default options
 app.use(fileUpload());
 
+// Models
+
+const Usuario = require('../models/usuario');
+const Hospital = require('../models/hospital');
+const Medico = require('../models/medico');
+
 app.put('/:tipo/:id', (req, res, next) => {
   // Obtener nombre del archivo
   let imagen = req.files.img;
