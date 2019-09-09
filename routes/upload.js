@@ -88,6 +88,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
       if (fs.existsSync(pathViejo)) {
         fs.unlink(pathViejo);
       }
+      usuario.img = nombreImagen;
     });
   }
   if (tipo === 'medicos') {
