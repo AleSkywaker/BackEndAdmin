@@ -89,6 +89,13 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
         fs.unlink(pathViejo);
       }
       usuario.img = nombreImagen;
+
+      usuario.save((err, usuarioActualizado) => {
+        res.status(200).json({
+          ok: true,
+          message: 'Imagen de usuario actualizada correctamente!!'
+        });
+      });
     });
   }
   if (tipo === 'medicos') {
