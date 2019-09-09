@@ -93,7 +93,8 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
       usuario.save((err, usuarioActualizado) => {
         res.status(200).json({
           ok: true,
-          message: 'Imagen de usuario actualizada correctamente!!'
+          message: 'Imagen de usuario actualizada correctamente!!',
+          usuario: usuarioActualizado
         });
       });
     });
