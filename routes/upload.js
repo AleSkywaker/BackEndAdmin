@@ -84,6 +84,9 @@ function subirPorTipo(tipo, id, path, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
       let pathViejo = './uploads/usuario/' + usuario.img;
+
+      if (fs.existsSync) {
+      }
     });
   }
   if (tipo === 'medicos') {
