@@ -82,9 +82,9 @@ app.put('/:tipo/:id', (req, res, next) => {
 
 function subirPorTipo(tipo, id, path, res) {
   if (tipo === 'usuarios') {
-    Usuario.findById(id, (err, usuario)=>{
-      
-    })
+    Usuario.findById(id, (err, usuario) => {
+      let pathViejo = './uploads/usuario/' + usuario.img;
+    });
   }
   if (tipo === 'medicos') {
   }
