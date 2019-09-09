@@ -69,7 +69,7 @@ app.put('/:tipo/:id', (req, res, next) => {
         errors: err
       });
     }
-    subirPorTipo(tipo, id, path, res);
+    subirPorTipo(tipo, id, nombreImagenPersonalizado, res);
 
     // res.status(200).json({
     //   ok: true,
@@ -80,7 +80,7 @@ app.put('/:tipo/:id', (req, res, next) => {
   });
 });
 
-function subirPorTipo(tipo, id, path, res) {
+function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
       let pathViejo = './uploads/usuario/' + usuario.img;
