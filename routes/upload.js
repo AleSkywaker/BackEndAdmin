@@ -82,6 +82,9 @@ app.put('/:tipo/:id', (req, res, next) => {
 
 function subirPorTipo(tipo, id, path, res) {
   if (tipo === 'usuarios') {
+    Usuario.findById(id, (err, usuario)=>{
+      
+    })
   }
   if (tipo === 'medicos') {
   }
