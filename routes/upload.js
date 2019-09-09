@@ -81,11 +81,11 @@ app.put('/:tipo/:id', (req, res, next) => {
 });
 
 function subirPorTipo(tipo, id, path, res) {
+  if (tipo === 'usuarios') {
+  }
   if (tipo === 'medicos') {
   }
   if (tipo === 'hospitales') {
-  }
-  if (tipo === 'usuarios') {
   }
 }
 
