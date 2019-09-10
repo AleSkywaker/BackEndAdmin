@@ -83,7 +83,7 @@ app.put('/:tipo/:id', (req, res, next) => {
 function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
-      var pathViejo = './uploads/usuarios/' + usuario.img;
+      let pathViejo = './uploads/usuarios/' + usuario.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
@@ -101,8 +101,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     });
   }
   if (tipo === 'medicos') {
-          var pathViejo = './uploads/usuarios/' + usuario.img;
-
+    let pathViejo = './uploads/medicos/' + usuario.img;
   }
   if (tipo === 'hospitales') {
   }
