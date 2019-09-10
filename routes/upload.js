@@ -83,7 +83,7 @@ app.put('/:tipo/:id', (req, res, next) => {
 function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
-      let pathViejo = './uploads/usuario/' + usuario.img;
+      let pathViejo = './uploads/usuarios/' + usuario.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlink(pathViejo);
