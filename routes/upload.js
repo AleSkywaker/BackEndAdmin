@@ -104,6 +104,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     let pathViejo = './uploads/medicos/' + usuario.img;
   }
   if (tipo === 'hospitales') {
+    let pathViejo = './uploads/hospitales/' + usuario.img;
   }
 }
 
