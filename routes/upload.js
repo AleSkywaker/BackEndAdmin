@@ -101,6 +101,8 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     });
   }
   if (tipo === 'medicos') {
+          var pathViejo = './uploads/usuarios/' + usuario.img;
+
   }
   if (tipo === 'hospitales') {
   }
