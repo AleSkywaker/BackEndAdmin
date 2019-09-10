@@ -83,18 +83,19 @@ app.put('/:tipo/:id', (req, res, next) => {
 function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
-      let pathViejo = './uploads/usuario/' + usuario.img;
+      //let pathViejo = './uploads/usuario/' + usuario.img;
       // Si existe elimina la imagen anterior
-      if (fs.existsSync(pathViejo)) {
-        fs.unlink(pathViejo);
-      }
-      usuario.img = nombreImagen;
+      // if (fs.existsSync(pathViejo)) {
+      //   fs.unlink(pathViejo);
+      // }
+      // usuario.img = nombreImagen;
 
       usuario.save((err, usuarioActualizado) => {
         return res.status(200).json({
           ok: true,
           message: 'Imagen de usuario actualizada correctamente!!',
-          usuario: usuarioActualizado
+          usuario: usuarioActualizado,
+          usuario
         });
       });
     });
