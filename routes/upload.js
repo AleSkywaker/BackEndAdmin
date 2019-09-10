@@ -84,7 +84,6 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
       var pathViejo = './uploads/usuarios/' + usuario.img;
-      console.log(pathViejo);
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
