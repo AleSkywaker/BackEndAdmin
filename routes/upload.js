@@ -111,12 +111,15 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     });
   }
   if (tipo === 'hospitales') {
-    let pathViejo = './uploads/hospitales/' + usuario.img;
-    // Si existe elimina la imagen anterior
-    if (fs.existsSync(pathViejo)) {
-      fs.unlinkSync(pathViejo);
-    }
-    usuario.img = nombreImagen;
+    Hospital.findById(id, (err, medico)=>{
+      let pathViejo = './uploads/hospitales/' + usuario.img;
+      // Si existe elimina la imagen anterior
+      if (fs.existsSync(pathViejo)) {
+        fs.unlinkSync(pathViejo);
+      }
+      usuario.img = nombreImagen;
+
+    })
   }
 }
 
