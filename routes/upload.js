@@ -106,6 +106,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     if (fs.existsSync(pathViejo)) {
       fs.unlinkSync(pathViejo);
     }
+    usuario.img = nombreImagen;
   }
   if (tipo === 'hospitales') {
     let pathViejo = './uploads/hospitales/' + usuario.img;
