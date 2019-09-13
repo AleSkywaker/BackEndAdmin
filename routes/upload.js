@@ -126,6 +126,14 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
         fs.unlinkSync(pathViejo);
       }
       usuario.img = nombreImagen;
+        Hospital.save((err, medicoActualizado) => {
+          return res.status(200).json({
+            ok: true,
+            message: 'Imagen de medico actualizada correctamente!!',
+            usuario: medicoActualizado,
+            usuario
+          });
+        });
     });
   }
 }
