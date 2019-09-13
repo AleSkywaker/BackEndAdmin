@@ -129,7 +129,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
       Hospital.save((err, hospitalActualizado) => {
         return res.status(200).json({
           ok: true,
-          message: 'Imagen de medico actualizada correctamente!!',
+          message: 'Imagen de hospital actualizada correctamente!!',
           usuario: hospitalActualizado,
           usuario
         });
