@@ -10,7 +10,7 @@ app.get('/', (req, res, next) => {
   desde = Number(desde);
   Usuario.find({}, 'nombre email img role')
     .skip(desde)
-    .limit(3)
+    .limit(5)
     .exec((err, usuarios) => {
       if (err) {
         return res.status(500).json({
