@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const app = express();
 const Usuario = require('../models/usuario');
-
 const mdAuth = require('../middlewares/authentication');
 
 app.get('/', (req, res, next) => {
