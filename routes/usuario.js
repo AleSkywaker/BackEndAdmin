@@ -98,7 +98,6 @@ app.delete('/:id', mdAuth.verificaToken, (req, res, next) => {
 
 app.post('/', mdAuth.verificaToken, (req, res, next) => {
   let body = req.body;
-
   var usuario = new Usuario({
     nombre: body.nombre,
     email: body.email,
