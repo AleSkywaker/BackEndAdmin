@@ -10,7 +10,6 @@ const app = express();
 app.use(fileUpload());
 
 // Models
-
 const Usuario = require('../models/usuario');
 const Hospital = require('../models/hospital');
 const Medico = require('../models/medico');
