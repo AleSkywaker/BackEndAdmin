@@ -129,5 +129,4 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     });
   }
 }
-
 module.exports = app;
