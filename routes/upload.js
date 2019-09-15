@@ -96,12 +96,13 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'medicos') {
     Medico.findById(id, (err, medico) => {
       let pathViejo = './uploads/medicos/' + medico.img;
+      console.log(medico);
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
       }
       medico.img = nombreImagen;
-      Medico.save((err, medicoActualizado) => {
+      medico.save((err, medicoActualizado) => {
         return res.status(200).json({
           ok: true,
           message: 'Imagen de medico actualizada correctamente!!',
@@ -118,7 +119,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
         fs.unlinkSync(pathViejo);
       }
       hospital.img = nombreImagen;
-      Hospital.save((err, hospitalActualizado) => {
+      hospital.save((err, hospitalActualizado) => {
         return res.status(200).json({
           ok: true,
           message: 'Imagen de hospital actualizada correctamente!!',
