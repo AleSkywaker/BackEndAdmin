@@ -95,7 +95,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   }
   if (tipo === 'medicos') {
     Medico.findById(id, (err, medico) => {
-      let pathViejo = './uploads/medicos/' + usuario.img;
+      let pathViejo = './uploads/medicos/' + medico.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
