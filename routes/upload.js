@@ -100,7 +100,7 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
       }
-      usuario.img = nombreImagen;
+      medico.img = nombreImagen;
       Medico.save((err, medicoActualizado) => {
         return res.status(200).json({
           ok: true,
