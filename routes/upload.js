@@ -111,19 +111,18 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
     });
   }
   if (tipo === 'hospitales') {
-    Hospital.findById(id, (err, medico) => {
-      let pathViejo = './uploads/hospitales/' + usuario.img;
+    Hospital.findById(id, (err, hospital) => {
+      let pathViejo = './uploads/hospitales/' + hospital.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
         fs.unlinkSync(pathViejo);
       }
-      usuario.img = nombreImagen;
+      hospital.img = nombreImagen;
       Hospital.save((err, hospitalActualizado) => {
         return res.status(200).json({
           ok: true,
           message: 'Imagen de hospital actualizada correctamente!!',
-          usuario: hospitalActualizado,
-          usuario
+          hospital: hospitalActualizado
         });
       });
     });
