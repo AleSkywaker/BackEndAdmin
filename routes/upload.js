@@ -75,6 +75,13 @@ app.put('/:tipo/:id', (req, res, next) => {
 function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'usuarios') {
     Usuario.findById(id, (err, usuario) => {
+      if (!hospital) {
+        return res.status(404).json({
+          ok: false,
+          message: 'No se ha encontrado hospital con este id!!',
+          error: { message: 'No se encontró hospital con este id' }
+        });
+      }
       let pathViejo = './uploads/usuarios/' + usuario.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
