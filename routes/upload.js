@@ -121,6 +121,11 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   if (tipo === 'hospitales') {
     Hospital.findById(id, (err, hospital) => {
       if (!hospital) {
+        return res.status(404).json({
+          ok: false,
+          message: 'No se ha encontrado hospital con este id!!',
+          error: { message: 'No se encontró hospital con este id' }
+        });
       }
       let pathViejo = './uploads/hospitales/' + hospital.img;
       // Si existe elimina la imagen anterior
