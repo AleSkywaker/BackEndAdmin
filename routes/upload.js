@@ -95,6 +95,14 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   }
   if (tipo === 'medicos') {
     Medico.findById(id, (err, medico) => {
+      if(!medico){
+        return res.status(404).json({
+          ok: false,
+          message: 'No se ha encontrado medico con este id!!',
+          error: {message:'No se encontró medico con este id'}
+        });
+
+      }
       let pathViejo = './uploads/medicos/' + medico.img;
       console.log(medico);
       // Si existe elimina la imagen anterior
