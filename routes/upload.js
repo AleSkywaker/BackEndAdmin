@@ -95,13 +95,12 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   }
   if (tipo === 'medicos') {
     Medico.findById(id, (err, medico) => {
-      if(!medico){
+      if (!medico) {
         return res.status(404).json({
           ok: false,
           message: 'No se ha encontrado medico con este id!!',
-          error: {message:'No se encontró medico con este id'}
+          error: { message: 'No se encontró medico con este id' }
         });
-
       }
       let pathViejo = './uploads/medicos/' + medico.img;
       console.log(medico);
@@ -121,6 +120,8 @@ function subirPorTipo(tipo, id, nombreImagen, res) {
   }
   if (tipo === 'hospitales') {
     Hospital.findById(id, (err, hospital) => {
+      if (!hospital) {
+      }
       let pathViejo = './uploads/hospitales/' + hospital.img;
       // Si existe elimina la imagen anterior
       if (fs.existsSync(pathViejo)) {
