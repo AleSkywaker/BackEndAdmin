@@ -28,9 +28,9 @@ db.once('open', function() {
   console.log('Conectatos a la base de datos');
 });
 // Server index config
-let serveIndex = require('serve-index');
-app.use(express.static(__dirname + '/'));
-app.use('/uploads', serveIndex(__dirname + '/uploads'));
+// let serveIndex = require('serve-index');
+// app.use(express.static(__dirname + '/'));
+// app.use('/uploads', serveIndex(__dirname + '/uploads'));
 // Rutas
 app.use('/upload', uploadRoutes);
 app.use('/medico', medicoRoutes);
