@@ -27,6 +27,7 @@ db.once('open', function() {
   // we're connected!
   console.log('Conectatos a la base de datos');
 });
+// Server index config
 
 // Rutas
 app.use('/upload', uploadRoutes);
