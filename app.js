@@ -18,6 +18,7 @@ const hospitalRoutes = require('./routes/hospital');
 const medicoRoutes = require('./routes/medico');
 const busquedaRoutes = require('./routes/busqueda');
 const uploadRoutes = require('./routes/upload');
+const imgRoutes = require('./routes/imagenes');
 
 mongoose.connect('mongodb://localhost:27017/hospitalDB', { useNewUrlParser: true });
 
@@ -32,6 +33,7 @@ let serveIndex = require('serve-index');
 app.use(express.static(__dirname + '/'));
 app.use('/uploads', serveIndex(__dirname + '/uploads'));
 // Rutas
+app.use('/imagen', imgRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/medico', medicoRoutes);
 app.use('/hospital', hospitalRoutes);
