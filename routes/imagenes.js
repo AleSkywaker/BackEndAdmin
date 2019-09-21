@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+cons path = require('path');
+
 app.get('/:tipo/:img', (req, res, next) => {
   let tipo = req.params.tipo;
   let img = req.params.img;
