@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const path = require('path');
+const fs = require('fs');
 
 app.get('/:tipo/:img', (req, res, next) => {
   let tipo = req.params.tipo;
