@@ -4,6 +4,8 @@ const app = express();
 app.get('/:tipo/:img', (req, res, next) => {
   let tipo = req.params.tipo;
   let img = req.params.img;
+
+  let pathImagen = '';
   res.status(200).json({
     ok: true,
     message: 'aqui esta tu imagen'
