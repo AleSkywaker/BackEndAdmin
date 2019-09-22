@@ -14,12 +14,13 @@ app.get('/:tipo/:img', (req, res, next) => {
     res.sendFile(pathImagen);
   } else {
     let pathNoImagen = path.resolve(__dirname, '../assets/no-image');
+    res.sendFile(pathNoImagen);
   }
 
-  res.status(200).json({
-    ok: true,
-    message: 'aqui esta tu imagen'
-  });
+  // res.status(200).json({
+  //   ok: true,
+  //   message: 'aqui esta tu imagen'
+  // });
 });
 
 module.exports = app;
