@@ -10,6 +10,9 @@ app.get('/:tipo/:img', (req, res, next) => {
 
   let pathImagen = path.resolve(__dirname, `../uploads/${tipo}/${img}`);
 
+  if (fs.existsSync(pathImagen)) {
+  }
+
   res.status(200).json({
     ok: true,
     message: 'aqui esta tu imagen'
