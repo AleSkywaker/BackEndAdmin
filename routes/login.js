@@ -6,9 +6,9 @@ const Usuario = require('../models/usuario');
 const jwt = require('jsonwebtoken');
 const SEED = require('../config/config').SEED;
 
-// Authenticacion normal
-
 // Authenticacion google
+
+// Authenticacion normal
 
 app.post('/', (req, res, next) => {
   let body = req.body;
