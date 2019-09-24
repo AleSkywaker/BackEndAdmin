@@ -8,7 +8,7 @@ const SEED = require('../config/config').SEED;
 
 // Authenticacion normal
 
-
+// Authenticacion google
 
 app.post('/', (req, res, next) => {
   let body = req.body;
