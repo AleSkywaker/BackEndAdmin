@@ -7,7 +7,12 @@ const jwt = require('jsonwebtoken');
 const SEED = require('../config/config').SEED;
 
 // Authenticacion google
-app.post('/google', (req, res) => {});
+app.post('/google', (req, res) => {
+  return res.status(500).json({
+    ok: true,
+    mensaje: 'everything ok'
+  });
+});
 // Authenticacion normal
 
 app.post('/', (req, res, next) => {
